@@ -265,9 +265,8 @@ const CollectionHeader = ({ name, isOwner, windowWidth, setQuery }) => {
             <div className="p-5">
               <h3 className="text-xl font-semibold mb-2">Important notice</h3>
               <p className="mb-4 leading-6">
-                Linkcollect soon will be sunsetting in few days, please export
-                your collection before as we can't gurantee data will be
-                available afterwards
+                Linkcollect soon will be shutting down in few days, please
+                export your collections right now for a backup
               </p>
               <div className="flex items-center gap-2 flex-wrap">
                 <Button

@@ -4,7 +4,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useNavigate,
 } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -14,7 +13,6 @@ import { useEffect, useState } from 'react';
 import Privacy from './components/PrivacyPolicy/Privacy';
 import Bookmarks from './pages/Bookmarks';
 import Home from './pages/Home';
-import jwt from 'jsonwebtoken';
 import Settings from './pages/Settings';
 import { setJwtInRequestHeader } from './api-services/httpService';
 import Explore from './pages/Explore';
@@ -26,6 +24,8 @@ import { setLoggedInUser } from './store/Slices/user.slice';
 import LandingPageV2 from './pages/LandingPageV2';
 import { HelmetProvider } from 'react-helmet-async';
 import ReactGA from 'react-ga';
+import AdminPanel from './pages/AdminPage';
+
 const TRACKING_ID = 'G-6NHCQSCVJP';
 
 ReactGA.initialize(TRACKING_ID);
@@ -37,6 +37,7 @@ function App() {
 
   const auth = useSelector(state => state.auth);
   const dispatch = useDispatch();
+
   //for responsiveness
   let width;
   if (typeof window !== 'undefined') {
@@ -76,7 +77,6 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            {/* Conditional Routes */}
             {/* Landing page  */}
             <Route
               path="/"
@@ -84,7 +84,6 @@ function App() {
                 auth.isLoggedIn ? (
                   <Navigate to={`/${auth?.username}`} />
                 ) : (
-                  // windowWidth < 1280 ? <LandingPage windowWidth={windowWidth} /> :
                   <LandingPageV2 windowWidth={windowWidth} />
                 )
               }
@@ -110,7 +109,18 @@ function App() {
                 )
               }
             />
-            {/* This are all open routes */}
+
+            {/* Admin Route - Protected */}
+            <Route
+              path="/admin/admin/admin"
+              element={
+                // <ProtectedAdminRoute>
+                <AdminPanel windowWidth={windowWidth} />
+                // </ProtectedAdminRoute>
+              }
+            />
+
+            {/* Open routes */}
             <Route
               path="/:username"
               element={<Home windowWidth={windowWidth} />}
@@ -129,7 +139,6 @@ function App() {
             />
 
             <Route path="/privacy" element={<Privacy />} />
-            {/* <Route path="/settings" element={<Settings />} /> */}
             <Route
               path="/:username/c/:collectionId"
               element={<Bookmarks windowWidth={windowWidth} />}

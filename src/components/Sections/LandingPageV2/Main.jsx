@@ -386,60 +386,11 @@ const Main = ({ analytics, exploreData = undefined, windowWidth }) => {
             </p>
           </div>
           <div className="pricing-cards mt-[3rem] mx-auto items-center lg:items-stretch flex flex-col lg:flex-row gap-[3rem] lg:justify-center ">
-            <div className="starter w-full max-w-[30rem] p-[2rem] border-[1px] border-neutral-300 rounded-[1rem] flex flex-col gap-[2rem] shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] hover:scale-[1.02] transition">
-              <div className="head min-h-[10.5rem] border-b-[1px] border-b-neutral-300">
-                <p className="text-neutral-700">Starter Plan</p>
-                <h3 className="text-[2.75rem] text-neutral-700">
-                  Free for everyone
-                </h3>
-              </div>
-              <div className="list text-neutral-800">
-                <p className="text-left mb-[1rem]">
-                  Includes Access to all basic features
-                </p>
-                <ul className="list-none flex flex-col gap-[0.75rem] text-left">
-                  <li className="flex">
-                    <img
-                      src={Approve}
-                      alt=""
-                      className="w-[1.25rem] mt-[-0.25rem] mr-[0.75rem]"
-                    />
-                    <p>Limited to 20 collections</p>
-                  </li>
-                  <li className="flex">
-                    <img
-                      src={Approve}
-                      alt=""
-                      className="w-[1.25rem] mt-[-0.25rem] mr-[0.75rem]"
-                    />
-                    <p>Save 2000 bookmarks (100 per collection)</p>
-                  </li>
-                  <li className="flex">
-                    <img
-                      src={Approve}
-                      alt=""
-                      className="w-[1.25rem] h-[1.5rem] mr-[0.75rem]"
-                    />
-                    <p className="">Add personalized notes to your bookmarks</p>
-                  </li>
-                </ul>
-              </div>
-              <div className="cta mt-auto">
-                <button
-                  onClick={() => {
-                    navigate('/signup');
-                  }}
-                  className="p-[0.75rem] h-min leading-[calc(1.25rem-4px)] w-full border-2 border-primary-300 rounded-[5px] flex gap-[0.25rem]"
-                >
-                  <p className="mx-auto">Get started with free</p>
-                </button>
-              </div>
-            </div>
             <div className="pro w-full max-w-[30rem] p-[2rem] bg-gradient-to-b from-primary-100 border-[1px] border-primary-400 rounded-[1rem] flex flex-col gap-[2rem] shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] hover:scale-[1.02] transition">
               <div className="head min-h-[10.5rem] border-b-[1px] border-b-neutral-300">
                 <p className="text-neutral-700">Pro Plan</p>
                 <h3 className="text-[2.75rem] text-neutral-700">
-                  $29 billed yearly
+                  $35 billed yearly
                 </h3>
                 <div className="mx-auto mt-[1rem] py-[0.125rem] px-[0.125rem] rounded-[3.5rem] border-[1px] border-neutral-300 bg-neutral-50 font-light h-max w-max items-center flex">
                   <div className="rounded-[3.5rem]  py-[0.125rem] px-[0.75rem] text-white bg-neutral-900 flex">

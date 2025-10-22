@@ -25,7 +25,7 @@ const AdminPanel = () => {
       setLoading(true);
       setError('');
       const { data } = await getUsers(searchQuery, page, pageSize);
-      setUsers(data.users || data);
+      setUsers(data.data.users || data);
     } catch (err) {
       setError('Failed to fetch users: ' + err.message);
     } finally {
@@ -93,25 +93,31 @@ const AdminPanel = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map(user => (
-                <tr key={user._id}>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
-                  <td>{user.isPremium ? '✓' : '✗'}</td>
-                  <td>
-                    <button onClick={() => handleViewStats(user._id)}>
-                      View Stats
-                    </button>
-                    <button
-                      onClick={() =>
-                        handleTogglePremium(user._id, user.isPremium)
-                      }
-                    >
-                      {user.isPremium ? 'Remove Premium' : 'Make Premium'}
-                    </button>
-                  </td>
+              {Array.isArray(users) && users.length > 0 ? (
+                users?.map(user => (
+                  <tr key={user._id}>
+                    <td>{user.username}</td>
+                    <td>{user.email}</td>
+                    <td>{user.isPremium ? '✓' : '✗'}</td>
+                    <td>
+                      <button onClick={() => handleViewStats(user._id)}>
+                        View Stats
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleTogglePremium(user._id, user.isPremium)
+                        }
+                      >
+                        {user.isPremium ? 'Remove Premium' : 'Make Premium'}
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4">No users found</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
 
